@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          ref: v2.4.3  # Update to the latest version of actions/checkout
+          ref: v2.5.2  # Update to the latest version of actions/checkout
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -21,11 +21,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'  # Update to use Node.js version 16
 
       - name: Create S3 Bucket
         run: aws s3api create-bucket --bucket my-unique-bucket-name --region us-east-1 --create-bucket-configuration LocationConstraint=us-east-1
